@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe
 
 # Create your views here.
@@ -22,6 +22,23 @@ def add_recipe(request):
 
         return redirect('home')
 
-    return render(request,'recipe_app/add_recipe.html')\
+    return render(request,'recipe_app/add_recipe.html')
+
+
+
+def search(request):
+    query = request.GET.get('search')
+    if query:
+        
+        if Recipe.objects.filter(recipe_name__icontains = query):
+            recipes = Recipe.objects.filter(recipe_name__icontains = query)
+        else:
+            return render(request,'recipe_app/notfound.html')
+        return render(request, 'recipe_app/search_results.html',{'recipes':recipes})
+    
+
+def view_recipe(request,recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    return render(request, 'recipe_app/recipe_view.html',{'recipe':recipe})
     
 

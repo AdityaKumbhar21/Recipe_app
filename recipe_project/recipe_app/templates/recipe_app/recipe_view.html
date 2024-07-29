@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{recipe.recipe_name}}
+{% endblock %}
+
+{% block content %}
+
+    {% if recipe.recipe_image %}
+    <div class="container-fluid">
+        <img src="{{recipe.recipe_image.url}}" alt="{{recipe.recipe_name}}" class = "img-fluid w-100">
+    </div>
+    {% endif %}
+    <div class="p-5 text-center bg-body-tertiary rounded-3">
+        <h1 class="text-body-emphasis">{{recipe.recipe_name}}</h1>
+        <p class="lead">
+        {{recipe.recipe}}
+        </p>
+    </div>
+    <div class=" d-flex justfy-content-center align-items-center mt-2 mb-4">
+    <a href="{% url "home" %}" class = "btn btn-dark mx-auto ">Back
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+.card .btn-hover {
+    visibility: visible;
+}
+
+.card:hover .btn-hover {
+    visibility: visible;
+}

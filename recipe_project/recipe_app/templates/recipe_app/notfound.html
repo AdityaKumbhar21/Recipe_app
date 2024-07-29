@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+Not Results Found
+{% endblock %}
+
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center mt-4">
+    <a class="btn btn-warning" href="{% url "add_recipe" %}">Add a recipe</a>
+</div> 
+<h2 class = "mt-5 text-center ">No results found!</h2>
+
+{% endblock %}

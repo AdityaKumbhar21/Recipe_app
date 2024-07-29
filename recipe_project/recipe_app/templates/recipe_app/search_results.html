@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Search recipe
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="d-flex justify-content-center align-items-center mt-4">
+        <a class="btn btn-warning" href="{% url "add_recipe" %}">Add a recipe</a>
+    </div>
+    
+    <div class="row mt-4 mx-2 my-2">
+      {% for recipe in recipes %}
+      <div class="col-md-4">
+          <div class="card mb-4 shadow-sm position-relative">
+              {% if recipe.recipe_image %}
+              <img src="{{ recipe.recipe_image.url }}" class="card-img-top" alt="{{ recipe.recipe_name }}">
+              {% endif %}
+              <div class="card-body">
+                  <h5 class="card-title">{{ recipe.recipe_name }}</h5>
+                  <p class="card-text">{{ recipe.recipe|slice:":20" }}...</p>
+                  <a href="" class="btn btn-primary btn-hover  d-flex justify-content-center">View Recipe</a>
+              </div>
+              
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+{% endblock %}
