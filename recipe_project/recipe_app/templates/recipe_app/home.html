@@ -7,4 +7,19 @@ Recipe Home
 
 {% block content %}
 
+    <div>
+        <a class="btn btn-warning" href="{% url "add_recipe" %}">Add a recipe</a>
+    </div>
+    
+    <div class="container row gap-3 mt-4">
+      {% for recipe in recipes %}
+      <div class="card" style="width: 18rem;">
+        <img src="{{recipe.recipe_image.url}}" class="card-img-top mt-2" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{recipe.recipe_name}}</h5>
+          <p class="card-text">{{recipe.recipe|slice:":20"}}...</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 {% endblock %}
